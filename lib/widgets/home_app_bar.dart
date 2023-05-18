@@ -9,7 +9,7 @@ class HomeAppBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(25),
-      child: Row(children: const [
+      child: Row(children:  [
         Icon(
           Icons.sort,
           size: 30,
@@ -38,14 +38,18 @@ class HomeAppBar extends StatelessWidget {
               "3",
             ),
             child: InkWell(
-              // onTap: () {},
+             onTap: () {
+              Navigator.pushNamed(context,"cardPage");
+             },
               child: Icon(
                 Icons.shopping_bag_outlined,
                 size: 30,
                 color: Color(0xFF4C53A5),
               ),
-            ))
-      ]),
+            ),
+            ),
+      ],
+      ),
     );
   }
 }
