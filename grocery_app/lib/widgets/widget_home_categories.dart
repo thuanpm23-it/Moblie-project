@@ -4,8 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:grocery_app/models/category.dart';
 import 'package:grocery_app/models/pagination.dart';
 
-import '../providers/category_provider.dart';
-
+import '../providers.dart';
 
 class HomeCategoriesWidget extends ConsumerWidget {
   const HomeCategoriesWidget({super.key});
@@ -13,22 +12,20 @@ class HomeCategoriesWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
-      child:  Column(
+      child: Column(
         children: [
-       const Padding(
-        padding: EdgeInsets.all(8.0),
-       child: Text(
-        "All categories",
-        style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold),
-       ),
-       ),
-       Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: _categoriesList(ref),
-       )
-      ],
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "All categories",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _categoriesList(ref),
+          )
+        ],
       ),
     );
   }
@@ -40,15 +37,17 @@ class HomeCategoriesWidget extends ConsumerWidget {
       ),
     );
     return categories.when(
-      data:(list){
+      data: (list) {
         return _buildCategoryList(list!);
       },
-      error:(_, __) => const Center(child: Text("ERR"),),
-      loading:() => const Center(child: CircularProgressIndicator()),
+      error: (_, __) => const Center(
+        child: Text("ERR"),
+      ),
+      loading: () => const Center(child: CircularProgressIndicator()),
     );
   }
 
-  Widget _buildCategoryList(List<Categrory> categories) {
+  Widget _buildCategoryList(List<Category> categories) {
     return Container(
       height: 100,
       alignment: Alignment.centerLeft,

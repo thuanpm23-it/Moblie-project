@@ -14,13 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Categrory _$CategroryFromJson(Map<String, dynamic> json) {
+Category _$CategoryFromJson(Map<String, dynamic> json) {
   return _Category.fromJson(json);
 }
 
 /// @nodoc
-class _$CategroryTearOff {
-  const _$CategroryTearOff();
+class _$CategoryTearOff {
+  const _$CategoryTearOff();
 
   _Category call(
       {required String categoryName,
@@ -33,40 +33,40 @@ class _$CategroryTearOff {
     );
   }
 
-  Categrory fromJson(Map<String, Object?> json) {
-    return Categrory.fromJson(json);
+  Category fromJson(Map<String, Object?> json) {
+    return Category.fromJson(json);
   }
 }
 
 /// @nodoc
-const $Categrory = _$CategroryTearOff();
+const $Category = _$CategoryTearOff();
 
 /// @nodoc
-mixin _$Categrory {
+mixin _$Category {
   String get categoryName => throw _privateConstructorUsedError;
   String get categoryImage => throw _privateConstructorUsedError;
   String get categoryId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CategroryCopyWith<Categrory> get copyWith =>
+  $CategoryCopyWith<Category> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CategroryCopyWith<$Res> {
-  factory $CategroryCopyWith(Categrory value, $Res Function(Categrory) then) =
-      _$CategroryCopyWithImpl<$Res>;
+abstract class $CategoryCopyWith<$Res> {
+  factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
+      _$CategoryCopyWithImpl<$Res>;
   $Res call({String categoryName, String categoryImage, String categoryId});
 }
 
 /// @nodoc
-class _$CategroryCopyWithImpl<$Res> implements $CategroryCopyWith<$Res> {
-  _$CategroryCopyWithImpl(this._value, this._then);
+class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
+  _$CategoryCopyWithImpl(this._value, this._then);
 
-  final Categrory _value;
+  final Category _value;
   // ignore: unused_field
-  final $Res Function(Categrory) _then;
+  final $Res Function(Category) _then;
 
   @override
   $Res call({
@@ -92,7 +92,7 @@ class _$CategroryCopyWithImpl<$Res> implements $CategroryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CategoryCopyWith<$Res> implements $CategroryCopyWith<$Res> {
+abstract class _$CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
   factory _$CategoryCopyWith(_Category value, $Res Function(_Category) then) =
       __$CategoryCopyWithImpl<$Res>;
   @override
@@ -100,7 +100,7 @@ abstract class _$CategoryCopyWith<$Res> implements $CategroryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CategoryCopyWithImpl<$Res> extends _$CategroryCopyWithImpl<$Res>
+class __$CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
     implements _$CategoryCopyWith<$Res> {
   __$CategoryCopyWithImpl(_Category _value, $Res Function(_Category) _then)
       : super(_value, (v) => _then(v as _Category));
@@ -151,14 +151,14 @@ class _$_Category with DiagnosticableTreeMixin implements _Category {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Categrory(categoryName: $categoryName, categoryImage: $categoryImage, categoryId: $categoryId)';
+    return 'Category(categoryName: $categoryName, categoryImage: $categoryImage, categoryId: $categoryId)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Categrory'))
+      ..add(DiagnosticsProperty('type', 'Category'))
       ..add(DiagnosticsProperty('categoryName', categoryName))
       ..add(DiagnosticsProperty('categoryImage', categoryImage))
       ..add(DiagnosticsProperty('categoryId', categoryId));
@@ -195,7 +195,7 @@ class _$_Category with DiagnosticableTreeMixin implements _Category {
   }
 }
 
-abstract class _Category implements Categrory {
+abstract class _Category implements Category {
   factory _Category(
       {required String categoryName,
       required String categoryImage,

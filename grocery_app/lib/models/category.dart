@@ -1,4 +1,3 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grocery_app/config.dart';
@@ -6,24 +5,23 @@ import 'package:grocery_app/config.dart';
 part 'category.freezed.dart';
 part 'category.g.dart';
 
-List<Categrory> CategoriesFromJson(dynamic str) => List<Categrory>.from(
+List<Category> CategoriesFromJson(dynamic str) => List<Category>.from(
       (str).map(
-        (e) => Categrory.fromJson(e),
+        (e) => Category.fromJson(e),
       ),
     );
 
 @freezed
-abstract class Categrory with _$Categrory {
-  factory Categrory(
+abstract class Category with _$Category {
+  factory Category(
       {required String categoryName,
       required String categoryImage,
       required String categoryId}) = _Category;
 
-  factory Categrory.fromJson(Map<String, dynamic> json) =>
-      _$CategroryFromJson(json);
-
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
 }
-extension CategoryExt on Categrory{
+
+extension CategoryExt on Category {
   String get fullImagePath => Config.imageURL + categoryImage;
 }
- 
