@@ -1,5 +1,5 @@
 const { MONGO_DB_CONFIG } = require("../config/app.config");
-const { category } = require("../models/category.nodel");
+const { category } = require("../models/category.model");
 
 async function createCategory(params, callback) {
   if (!params.categoryName) {
@@ -49,7 +49,7 @@ async function getCategoryById(params, callback) {
   const categoryId = params.categoryId;
 
   category
-    .find(categoryId)
+    .findById(categoryId)
     .then((response) => {
       if (!response) callback("Not Found Category with Id" + categoryId);
       else callback(null, response);

@@ -40,7 +40,7 @@ exports.findAll = (req, res, next) => {
     pageSize: req.query.pageSize,
     page: req.query.page,
   };
-  productServices.getProducts(model, (error, results) => {
+  productServices.getProduct(model, (error, results) => {
     if (error) {
       return next(error);
     } else {
@@ -56,7 +56,7 @@ exports.findOne = (req, res, next) => {
   var model = {
     productId: req.params.id,
   };
-  productServices.getProducts(model, (error, results) => {
+  productServices.getProduct(model, (error, results) => {
     if (error) {
       return next(error);
     } else {
@@ -106,7 +106,7 @@ exports.delete = (req, res, next) => {
   var model = {
     productId: req.params.id,
   };
-  productServices.deleteProducts(model, (error, results) => {
+  productServices.deleteProduct(model, (error, results) => {
     if (error) {
       return next(error);
     } else {
