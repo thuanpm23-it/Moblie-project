@@ -15,7 +15,17 @@ const category = mongoose.model(
     categoryImage: {
       type: String,
     },
-  })
+  },
+  {
+    toJSON:{
+      tranform:function(doc,ret){
+        ret.categoryId = ret._id.toString();
+        delete ret._id;
+        delete ret._v;
+      },
+    }
+  }
+  )
 );
 
 module.exports = {
