@@ -28,7 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
         body: ProgressHUD(
           child: Form(
             key: globalKey,
-            child: Text("ss"),
+            child: _registerUI(),
           ),
           inAsyncCall: inAsyncCallProcess,
           opacity: .3,
@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  Widget _registerUI(BuildContext context) {
+  Widget _registerUI() {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -47,9 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Align(
                 alignment: Alignment.center,
                 child: Image.asset(
