@@ -49,9 +49,10 @@ async function getProduct(params, callback) {
   product
     .find(
       condition,
-      "productId productName productShortDescription productDescription productPrice productSalePrice productImage productSKU productType stockStatus "
+      "productId productName productShortDescription productDescription productPrice productSalePrice productImage productSKU productType stockStatus createdAt updateAt"
     )
     .populate("category", "categoryName categoryImage")
+    .sort(params.sort)
     .limit(perPage)
     .skip(perPage * page)
     .then((response) => {

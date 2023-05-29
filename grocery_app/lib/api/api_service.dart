@@ -42,6 +42,12 @@ class APIService {
     if (productFilterModel.categoryId != null) {
       queryString["categoryId"] = productFilterModel.categoryId!;
     }
+
+    if (productFilterModel.sortBy != null) {
+      queryString["sort"] = productFilterModel.sortBy!;
+    }
+
+
     var url = Uri.http(Config.apiURL, Config.productAPI, queryString);
     var response = await client.get(url, headers: requestHeaders);
     if (response.statusCode == 200) {
