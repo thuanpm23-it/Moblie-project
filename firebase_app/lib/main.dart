@@ -4,7 +4,6 @@ import 'package:firebase_app/screens/auth_ui/welcome/welcome.dart';
 import 'package:firebase_app/screens/home/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 
 void main() async {
