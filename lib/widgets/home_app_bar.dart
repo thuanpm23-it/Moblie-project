@@ -9,27 +9,23 @@ class HomeAppBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.all(25),
-      child: Row(children:  [
-        Icon(
-          Icons.sort,
-          size: 30,
-          color: Color(0xFF4C53A5),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: 20,
-          ),
-          child: Text(
-            "E Shop",
-            style: TextStyle(
-              fontSize: 23,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF4C53A5),
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: 20,
+            ),
+            child: Text(
+              "E Shop",
+              style: TextStyle(
+                fontSize: 23,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF4C53A5),
+              ),
             ),
           ),
-        ),
-        Spacer(),
-        badges.Badge(
+          Spacer(),
+          badges.Badge(
             badgeStyle: badges.BadgeStyle(
               badgeColor: Colors.red,
               padding: EdgeInsets.all(7),
@@ -38,17 +34,17 @@ class HomeAppBar extends StatelessWidget {
               "3",
             ),
             child: InkWell(
-             onTap: () {
-              Navigator.pushNamed(context,"cardPage");
-             },
+              onTap: () {
+                Navigator.pushNamed(context, "cardPage");
+              },
               child: Icon(
                 Icons.shopping_bag_outlined,
                 size: 30,
                 color: Color(0xFF4C53A5),
               ),
             ),
-            ),
-      ],
+          ),
+        ],
       ),
     );
   }

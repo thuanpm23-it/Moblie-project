@@ -91,7 +91,19 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        onTap:(index) {} ,
+        onTap: (index) {
+          switch (index) {
+            case 0: // Chọn mục Home
+              Navigator.pushReplacementNamed(context, "/");
+              break;
+            case 1: // Chọn mục Cart
+              Navigator.pushReplacementNamed(context, "cardPage");
+              break;
+            case 2: // Chọn mục Item
+              Navigator.pushReplacementNamed(context, "itemPage");
+              break;
+          }
+        },
         height: 70,
         color: Color(0xFF4C53A5),
         items: [
@@ -101,7 +113,7 @@ class HomePage extends StatelessWidget {
             color: Colors.white,
           ),
           Icon(
-         CupertinoIcons.cart_fill,
+            CupertinoIcons.cart_fill,
             size: 30,
             color: Colors.white,
           ),
