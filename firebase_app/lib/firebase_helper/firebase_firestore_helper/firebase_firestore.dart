@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../constants/constants.dart';
 import '../../models/category_model/category_model.dart';
 import '../../models/product_model/product_model.dart';
+import '../../models/user_model/user_model.dart';
 
 class FirebaseFirestoreHelper {
   static FirebaseFirestoreHelper instance = FirebaseFirestoreHelper();
@@ -57,5 +59,15 @@ class FirebaseFirestoreHelper {
       showMessage(e.toString());
       return [];
     }
+  }
+
+  Future<UserModel> getUserInformation() async {
+    DocumentSnapshot<Map<String, dynamic>> querySnapshot =
+        await _firebaseFirestore
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .get();
+
+    return UserModel.fromJson(querySnapshot.data()!);
   }
 }

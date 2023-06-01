@@ -1,3 +1,4 @@
+import 'package:firebase_app/screens/custom_bottom_bar/custom_bottom_bar.dart';
 import 'package:firebase_app/screens/home/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                         .signUp(name.text, email.text, password.text, context);
                     if (isLogined) {
                       Routes.instance.pushAndRemoveUntil(
-                          widget: const Home(), context: context);
+                          widget: const CustomBottomBar(), context: context);
                     }
                   }
                 },

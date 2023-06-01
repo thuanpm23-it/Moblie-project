@@ -3,9 +3,11 @@ import 'package:firebase_app/models/category_model/category_model.dart';
 import 'package:firebase_app/models/product_model/product_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/routes.dart';
-import '../../widgets/top_titles/top_titles..dart';
+
+import '../../provider/app_provider.dart';
 import '../category_view/category_view.dart';
 import '../product_details/product_details.dart';
 
@@ -23,6 +25,9 @@ class _HomeState extends State<Home> {
   bool isLoading = false;
   @override
   void initState() {
+    AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
+    appProvider.getUserInfoFirebase();
+
     getCategoryList();
     super.initState();
   }
@@ -42,6 +47,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).primaryColor,
+        title: const Center(
+          child: Text(
+            "Home Screen",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       body: isLoading
           ? Center(
               child: Container(
@@ -60,7 +76,6 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const TopTitles(subtitle: "", title: "E Commerce"),
                         TextFormField(
                           decoration:
                               const InputDecoration(hintText: "Search...."),
@@ -139,7 +154,7 @@ class _HomeState extends State<Home> {
                       : Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: GridView.builder(
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.only(bottom: 50),
                             shrinkWrap: true,
                             primary: false,
                             itemCount: productsList.length,
