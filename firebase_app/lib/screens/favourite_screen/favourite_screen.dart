@@ -14,12 +14,12 @@ class FavouriteScreen extends StatelessWidget {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: Theme.of(context).primaryColor,
         title: const Center(
           child: Text(
-            "Favourite Screen",
+            "Favourite",
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),

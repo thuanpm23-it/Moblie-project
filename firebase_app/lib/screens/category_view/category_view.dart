@@ -40,12 +40,14 @@ class _CategoryViewState extends State<CategoryView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: Theme.of(context).primaryColor,
+        centerTitle: true,
         title: Text(
           widget.categoryModel.name,
           style: const TextStyle(
+            color: Colors.black,
             fontSize: 18.0,
-            fontWeight: FontWeight.bold,
+            // fontWeight: FontWeight.bold,
           ),
         ),
       ),

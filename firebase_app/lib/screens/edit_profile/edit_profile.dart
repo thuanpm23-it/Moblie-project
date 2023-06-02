@@ -36,7 +36,8 @@ class _EditProfileState extends State<EditProfile> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        // backgroundColor: Theme.of(context).primaryColor,
+        centerTitle: true,
         title: const Text(
           "Profile",
           style: TextStyle(
@@ -45,7 +46,7 @@ class _EditProfileState extends State<EditProfile> {
         ),
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        padding: const EdgeInsets.all(12),
         children: [
           image == null
               ? CupertinoButton(

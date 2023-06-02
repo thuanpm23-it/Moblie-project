@@ -39,21 +39,23 @@ class _HomeState extends State<Home> {
     categoriesList = await FirebaseFirestoreHelper.instance.getCategories();
     productsList = await FirebaseFirestoreHelper.instance.getBestProducts();
     productsList.shuffle();
-    setState(() {
-      isLoading = false;
-    });
+    if (mounted) {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: Theme.of(context).primaryColor,
         title: const Center(
           child: Text(
-            "Home Screen",
+            "Home",
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
@@ -168,7 +170,7 @@ class _HomeState extends State<Home> {
                               ProductModel singleProduct = productsList[index];
                               return Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
+                                  borderRadius: BorderRadius.circular(6),
                                   color: Theme.of(context)
                                       .primaryColor
                                       .withOpacity(0.1),

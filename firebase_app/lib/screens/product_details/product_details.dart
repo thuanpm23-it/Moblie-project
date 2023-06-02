@@ -1,5 +1,6 @@
 import 'package:firebase_app/constants/constants.dart';
 import 'package:firebase_app/provider/app_provider.dart';
+import 'package:firebase_app/screens/check_out/check_out.dart';
 import 'package:firebase_app/screens/favourite_screen/favourite_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        // backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
             onPressed: () {
@@ -146,7 +147,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                     height: 38,
                     width: 140,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        ProductModel productModel =
+                            widget.singleProduct.copyWith(qty: qty);
+                        Routes.instance.push(
+                            widget: CheckOut(singleProduct: productModel),
+                            context: context);
+                      },
                       child: const Text("BUY"),
                     ),
                   )

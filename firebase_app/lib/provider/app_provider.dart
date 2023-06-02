@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,6 +14,8 @@ import '../models/user_model/user_model.dart';
 class AppProvider with ChangeNotifier {
   //// Cart Work
   final List<ProductModel> _cartProductList = [];
+
+  final List<ProductModel> _buyProductList = [];
 
   UserModel? _userModel;
 
@@ -78,4 +82,46 @@ class AppProvider with ChangeNotifier {
 
     notifyListeners();
   }
+
+  double totalPrice() {
+    double totalPrice = 0.0;
+    for (var element in _cartProductList) {
+      totalPrice += element.price * element.qty!;
+    }
+    return totalPrice;
+  }
+
+  // double totalPriceBuyProductList() {
+  //   double totalPrice = 0.0;
+  //   for (var element in _buyProductList) {
+  //     totalPrice += element.price * element.qty!;
+  //   }
+  //   return totalPrice;
+  // }
+
+  void updateQty(ProductModel productModel, int qty) {
+    int index = _cartProductList.indexOf(productModel);
+    _cartProductList[index].qty = qty;
+    notifyListeners();
+  }
+
+  void addBuyProduct(ProductModel model) {
+    _buyProductList.add(model);
+    notifyListeners();
+  }
+
+  // void addBuyProductCartList() {
+  //   _buyProductList.addAll(_cartProductList);
+  //   notifyListeners();
+  // }
+
+  // void clearCart() {
+  //   _cartProductList.clear();
+  //   notifyListeners();
+  // }
+
+  // void clearBuyProduct() {
+  //   _buyProductList.clear();
+  //   notifyListeners();
+  List<ProductModel> get getBuyProductList => _buyProductList;
 }

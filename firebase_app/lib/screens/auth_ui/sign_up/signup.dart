@@ -1,12 +1,14 @@
-import 'package:firebase_app/screens/custom_bottom_bar/custom_bottom_bar.dart';
-import 'package:firebase_app/screens/home/home.dart';
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../../../constants/constants.dart';
 import '../../../constants/routes.dart';
 import '../../../firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import '../../../widgets/primary_button/primary_button.dart';
 import '../../../widgets/top_titles/top_titles..dart';
+import '../../custom_bottom_bar/custom_bottom_bar.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

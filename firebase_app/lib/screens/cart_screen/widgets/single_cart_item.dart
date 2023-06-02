@@ -76,6 +76,8 @@ class _SingleCartIemState extends State<SingleCartIem> {
                                       setState(() {
                                         qty--;
                                       });
+                                      appProvider.updateQty(
+                                          widget.singleProduct, qty);
                                     }
                                   },
                                   padding: EdgeInsets.zero,
@@ -96,6 +98,8 @@ class _SingleCartIemState extends State<SingleCartIem> {
                                     setState(() {
                                       qty++;
                                     });
+                                    appProvider.updateQty(
+                                        widget.singleProduct, qty);
                                   },
                                   padding: EdgeInsets.zero,
                                   child: const CircleAvatar(
@@ -134,7 +138,7 @@ class _SingleCartIemState extends State<SingleCartIem> {
                         ),
                         Text(
                           "\$${widget.singleProduct.price.toString()}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
                           ),

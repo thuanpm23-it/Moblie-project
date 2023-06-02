@@ -1,11 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
-import '../../constants/routes.dart';
 import '../../models/user_model/user_model.dart';
-import '../../screens/home/home.dart';
 
 class FirebaseAuthHelper {
   static FirebaseAuthHelper instance = FirebaseAuthHelper();
@@ -18,10 +18,10 @@ class FirebaseAuthHelper {
     try {
       showLoaderDialog(context);
       await _auth.signInWithEmailAndPassword(email: email, password: password);
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       return true;
     } on FirebaseAuthException catch (error) {
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       showMessage(error.code.toString());
       return false;
     }
@@ -37,10 +37,10 @@ class FirebaseAuthHelper {
           id: userCredential.user!.uid, name: name, email: email, image: null);
 
       _firestore.collection("users").doc(userModel.id).set(userModel.toJson());
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       return true;
     } on FirebaseAuthException catch (error) {
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       showMessage(error.code.toString());
       return false;
     }
@@ -48,5 +48,27 @@ class FirebaseAuthHelper {
 
   void signOut() async {
     await _auth.signOut();
+  }
+
+  Future<bool> changePassword(String password, BuildContext context) async {
+    try {
+      showLoaderDialog(context);
+      _auth.currentUser!.updatePassword(password);
+      // UserCredential userCredential = await _auth
+      //     .createUserWithEmailAndPassword(email: email, password: password);
+      // UserModel userModel = UserModel(
+      //     id: userCredential.user!.uid, name: name, email: email, image: null);
+
+      // _firestore.collection("users").doc(userModel.id).set(userModel.toJson());
+      Navigator.of(context, rootNavigator: true).pop();
+      showMessage("Password Changed");
+      Navigator.of(context).pop();
+
+      return true;
+    } on FirebaseAuthException catch (error) {
+      Navigator.of(context, rootNavigator: true).pop();
+      showMessage(error.code.toString());
+      return false;
+    }
   }
 }
