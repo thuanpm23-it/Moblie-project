@@ -1,9 +1,9 @@
+import 'package:firebase_app/screens/cart_item_checkout/cart_item_checkout.dart';
 import 'package:firebase_app/screens/cart_screen/widgets/single_cart_item.dart';
-import 'package:firebase_app/screens/check_out/check_out.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../constants/constants.dart';
 import '../../constants/routes.dart';
 import '../../provider/app_provider.dart';
 import '../../widgets/primary_button/primary_button.dart';
@@ -53,6 +53,15 @@ class _CartScreenState extends State<CartScreen> {
               PrimaryButton(
                 title: "Checkout",
                 onPressed: () {
+                   appProvider.clearBuyProduct();
+                  appProvider.addBuyProductCartList();
+                  appProvider.clearCart();
+                  if (appProvider.getBuyProductList.isEmpty) {
+                    showMessage("Cart is empty");
+                  } else {
+                    Routes.instance.push(
+                        widget: const CartItemCheckout(), context: context);
+                  }
                   // Routes.instance
                   //     .push(widget: const CheckOut(), context: context);
                 },

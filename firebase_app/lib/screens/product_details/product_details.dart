@@ -1,7 +1,6 @@
 import 'package:firebase_app/constants/constants.dart';
 import 'package:firebase_app/provider/app_provider.dart';
 import 'package:firebase_app/screens/check_out/check_out.dart';
-import 'package:firebase_app/screens/favourite_screen/favourite_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

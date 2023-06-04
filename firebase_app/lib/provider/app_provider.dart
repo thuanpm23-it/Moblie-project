@@ -110,18 +110,19 @@ class AppProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // void addBuyProductCartList() {
-  //   _buyProductList.addAll(_cartProductList);
-  //   notifyListeners();
-  // }
+  void addBuyProductCartList() {
+    _buyProductList.addAll(_cartProductList);
+    notifyListeners();
+  }
 
-  // void clearCart() {
-  //   _cartProductList.clear();
-  //   notifyListeners();
-  // }
+  void clearCart() {
+    _cartProductList.clear();
+    notifyListeners();
+  }
 
-  // void clearBuyProduct() {
-  //   _buyProductList.clear();
-  //   notifyListeners();
+  void clearBuyProduct() {
+    _buyProductList.clear();
+    notifyListeners();
+  }
   List<ProductModel> get getBuyProductList => _buyProductList;
 }
