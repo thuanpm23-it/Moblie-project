@@ -14,7 +14,7 @@ class StripeHelper {
   static StripeHelper instance = StripeHelper();
 
   Map<String, dynamic>? paymentIntent;
-  Future<void> makePayment(String amount, BuildContext context) async {
+  Future<bool> makePayment(String amount) async {
     try {
       paymentIntent = await createPaymentIntent(amount, 'USD');
 
@@ -33,32 +33,46 @@ class StripeHelper {
           .then((value) {});
 
       //STEP 3: Display Payment sheet
-      displayPaymentSheet(context);
+      displayPaymentSheet();
+      return true;
     } catch (err) {
       showMessage(err.toString());
+      return false;
+      
     }
   }
 
-  displayPaymentSheet(BuildContext context) async {
-    AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
+  // displayPaymentSheet() async {
+  //   AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
+  //   try {
+  //     await Stripe.instance.presentPaymentSheet().then((value) async {
+  //       bool value = await FirebaseFirestoreHelper.instance
+  //           .uploadOrderedProductFirebase(
+  //               appProvider.getBuyProductList, context, "Paid");
+
+  //       appProvider.clearBuyProduct();
+  //       if (value) {
+  //         Future.delayed(const Duration(seconds: 2), () {
+  //           Routes.instance
+  //               .push(widget: const CustomBottomBar(), context: context);
+  //         });
+  //       }
+  //     });
+  //   } catch (e) {
+  //     showMessage(e.toString());
+  //   }
+  // }
+
+  displayPaymentSheet() async {
     try {
-      await Stripe.instance.presentPaymentSheet().then((value) async {
-        bool value = await FirebaseFirestoreHelper.instance
-            .uploadOrderedProductFirebase(
-                appProvider.getBuyProductList, context, "Paid");
-
-        appProvider.clearBuyProduct();
-        if (value) {
-          Future.delayed(const Duration(seconds: 2), () {
-            Routes.instance
-                .push(widget: const CustomBottomBar(), context: context);
-          });
-        }
-      });
+      await Stripe.instance.presentPaymentSheet().then((value) {
+        print(" Payment Successfully");
+      },);
     } catch (e) {
-       showMessage(e.toString());
+      print('$e');
     }
   }
+
 
   createPaymentIntent(String amount, String currency) async {
     try {

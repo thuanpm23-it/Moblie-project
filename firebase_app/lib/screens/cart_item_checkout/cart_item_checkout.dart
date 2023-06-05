@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:firebase_app/stripe_helper/stripe_helper.dart';
 import 'package:firebase_app/widgets/primary_button/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -130,15 +131,27 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                           widget: const CustomBottomBar(), context: context);
                     });
                   }
-                } else {
-                 
-                  // int value = double.parse(
-                  //         appProvider.totalPriceBuyProductList().toString())
-                  //     .round()
-                  //     .toInt();
-                  // String totalPrice = (value * 100).toString();
-                  // await StripeHelper.instance
-                  //     .makePayment(totalPrice.toString(), context);
+                }
+                if (groupValue == 2) {
+                  int value = double.parse(appProvider.totalPrice().toString()).round().toInt();
+                  print("hello");
+                  double totalPrice = appProvider.totalPrice() * 100;
+
+                  bool isSuccessfullyPayment = await StripeHelper.instance
+                      .makePayment(totalPrice.toString());
+                  if (isSuccessfullyPayment) {
+                    bool value = await FirebaseFirestoreHelper.instance
+                        .uploadOrderedProductFirebase(
+                            appProvider.getBuyProductList, context, "Paid");
+
+                    appProvider.clearBuyProduct();
+                    if (value) {
+                      Future.delayed(const Duration(seconds: 2), () {
+                        Routes.instance.push(
+                            widget: const CustomBottomBar(), context: context);
+                      });
+                    }
+                  }
                 }
               },
             )

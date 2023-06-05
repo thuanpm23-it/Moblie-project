@@ -1,5 +1,9 @@
+import 'package:firebase_app/provider/app_provider.dart';
+import 'package:firebase_app/screens/edit_profile/edit_profile.dart';
 import 'package:firebase_app/screens/order_screen/order_screen.dart';
+import 'package:firebase_app/widgets/primary_button/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 
 import '../../constants/routes.dart';
@@ -20,9 +24,9 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
-    // AppProvider appProvider = Provider.of<AppProvider>(
-    //   context,
-    // );
+    AppProvider appProvider = Provider.of<AppProvider>(
+      context,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -39,45 +43,45 @@ class _AccountScreenState extends State<AccountScreen> {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            // Expanded(
-            //   child: Column(
-            //     children: [
-            //       appProvider.getUserInformation.image == null
-            //           ? const Icon(
-            //               Icons.person_outline,
-            //               size: 120,
-            //             )
-            //           : CircleAvatar(
-            //               backgroundImage: NetworkImage(
-            //                   appProvider.getUserInformation.image!),
-            //               radius: 60,
-            //             ),
-            //       Text(
-            //         appProvider.getUserInformation.name,
-            //         style: const TextStyle(
-            //           fontSize: 22,
-            //           fontWeight: FontWeight.bold,
-            //         ),
-            //       ),
-            //       Text(
-            //         appProvider.getUserInformation.email,
-            //       ),
-            //       const SizedBox(
-            //         height: 12.0,
-            //       ),
-            //       SizedBox(
-            //         width: 130,
-            //         child: PrimaryButton(
-            //           title: "Edit Profile",
-            //           onPressed: () {
-            //             Routes.instance.push(
-            //                 widget: const EditProfile(), context: context);
-            //           },
-            //         ),
-            //       )
-            //     ],
-            //   ),
-            // ),
+            Expanded(
+              child: Column(
+                children: [
+                  appProvider.getUserInformation.image == null
+                      ? const Icon(
+                          Icons.person_outline,
+                          size: 120,
+                        )
+                      : CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              appProvider.getUserInformation.image!),
+                          radius: 60,
+                        ),
+                  Text(
+                    appProvider.getUserInformation.name,
+                    style: const TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    appProvider.getUserInformation.email,
+                  ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  SizedBox(
+                    width: 130,
+                    child: PrimaryButton(
+                      title: "Edit Profile",
+                      onPressed: () {
+                        Routes.instance.push(
+                            widget: const EditProfile(), context: context);
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
             Expanded(
               flex: 2,
               child: Column(
