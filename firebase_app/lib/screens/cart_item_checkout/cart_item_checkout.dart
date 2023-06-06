@@ -133,7 +133,7 @@ class _CartItemCheckoutState extends State<CartItemCheckout> {
                   }
                 }
                 if (groupValue == 2) {
-                  int value = double.parse(appProvider.totalPrice().toString()).round().toInt();
+                  // int value = double.parse(appProvider.totalPrice().toString()).round().toInt();
                   print("hello");
                   double totalPrice = appProvider.totalPrice() * 100;
 

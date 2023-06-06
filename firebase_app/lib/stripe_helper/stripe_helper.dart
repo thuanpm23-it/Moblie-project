@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:firebase_app/constants/constants.dart';
-import 'package:firebase_app/constants/routes.dart';
+// import 'package:firebase_app/constants/routes.dart';
 import 'package:http/http.dart' as http;
-import 'package:firebase_app/firebase_helper/firebase_firestore_helper/firebase_firestore.dart';
-import 'package:firebase_app/provider/app_provider.dart';
-import 'package:firebase_app/screens/custom_bottom_bar/custom_bottom_bar.dart';
+// import 'package:firebase_app/firebase_helper/firebase_firestore_helper/firebase_firestore.dart';
+// import 'package:firebase_app/provider/app_provider.dart';
+// import 'package:firebase_app/screens/custom_bottom_bar/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class StripeHelper {
   static StripeHelper instance = StripeHelper();
@@ -21,7 +21,7 @@ class StripeHelper {
       var gpay = const PaymentSheetGooglePay(
           merchantCountryCode: "US", currencyCode: "USD", testEnv: true);
 
-      //STEP 2: Initialize Payment Sheet
+     
       await Stripe.instance
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
@@ -32,7 +32,7 @@ class StripeHelper {
                   googlePay: gpay))
           .then((value) {});
 
-      //STEP 3: Display Payment sheet
+      
       displayPaymentSheet();
       return true;
     } catch (err) {
